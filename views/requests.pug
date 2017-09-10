@@ -1,0 +1,21 @@
+doctype html 
+html
+    head
+        link(href='/stylesheets/requests.css', rel='stylesheet')
+    body
+        table
+            caption Tarea 1 - David Galemiri 
+            thead
+                tr
+                    th(scope='col') Ip cliente
+                    th(scope='col') Hora requests
+            tbody
+                - for (var i = 0; i < data.length; i++) {
+                tr
+                    td(data-label='ip')= data[i].ip
+                    td(data-label='date')= data[i].date
+                - }
+                
+
+                
+                
