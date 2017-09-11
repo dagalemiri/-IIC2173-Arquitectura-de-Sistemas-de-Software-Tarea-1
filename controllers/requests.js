@@ -2,7 +2,6 @@
 
 let express = require('express');
 let router = express.Router();
-let dateFormat = require('dateformat');
 let Address6 = require('ip-address').Address6;
 
 let db = require('../db');
@@ -13,12 +12,11 @@ router.get('/', (req,res) => {
     let ip = req.connection.remoteAddress;
 
     let currentdate = new Date(); 
-    let datetime = dateFormat(currentdate);
 
     let clientAddress = new Address6(ip);                    
     let client_ip = clientAddress.to4().correctForm();
 
-    let message =  {ip: client_ip, date: datetime};
+    let message =  {ip: client_ip, date: currentdate.toISOString()};
 
     requestsModel.append(message);
 
